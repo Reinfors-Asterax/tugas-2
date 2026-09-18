@@ -1,0 +1,631 @@
+/* ==========================================================================
+   APPLE.COM OFFICIAL-STYLE DESIGN SYSTEM (IMPROVED & POLISHED)
+   Static, Non-Animated, Pixel-Accurate Typography & Architecture
+   ========================================================================== */
+
+/* 1. RESET & VARIABLES */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --apple-font:
+    "SF Pro Display", "SF Pro Text", "Inter", -apple-system, BlinkMacSystemFont,
+    "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --bg-nav: rgba(22, 22, 23, 0.85);
+  --bg-dark: #000000;
+  --bg-dark-secondary: #161617;
+  --bg-light: #f5f5f7;
+  --bg-white: #ffffff;
+  --text-dark: #1d1d1f;
+  --text-light: #f5f5f7;
+  --text-gray: #86868b;
+  --text-secondary: #515154;
+  --apple-blue: #0071e3;
+  --apple-blue-hover: #0077ed;
+  --apple-orange: #f56300;
+  --border-subtle: #d2d2d7;
+  --border-dark: rgba(255, 255, 255, 0.12);
+}
+
+html {
+  font-family: var(--apple-font);
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  line-height: 1.47059;
+  font-weight: 400;
+  letter-spacing: -0.022em;
+  background-color: #000000;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* 2. GLOBAL NAVIGATION (44px) */
+.globalnav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 44px;
+  background: var(--bg-nav);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  z-index: 9999;
+}
+
+.globalnav-content {
+  max-width: 1024px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 22px;
+}
+
+.globalnav-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.globalnav-item {
+  display: flex;
+  align-items: center;
+}
+
+.globalnav-link {
+  font-size: 12px;
+  color: #d6d6d6;
+  letter-spacing: -0.01em;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  opacity: 0.8;
+}
+
+.globalnav-link:hover,
+.globalnav-link.active {
+  color: #ffffff;
+  opacity: 1;
+}
+
+.nextstore-logo {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  padding-left: 0;
+  opacity: 1;
+}
+
+.nextstore-logo:hover {
+  color: var(--apple-blue);
+}
+
+.nav-icon {
+  padding: 0 4px;
+}
+
+/* 3. RIBBON PENGUMUMAN */
+.ribbon {
+  background-color: #121212;
+  color: #a1a1a6;
+  text-align: center;
+  font-size: 13px;
+  padding: 12px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ribbon a {
+  color: #2997ff;
+}
+
+.ribbon a:hover {
+  text-decoration: underline;
+}
+
+/* 5. BUTTONS KHAS APPLE */
+.btn-apple-primary {
+  display: inline-block;
+  background-color: var(--apple-blue);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 8px 18px;
+  border-radius: 980px;
+  border: 1px solid transparent;
+}
+
+.btn-apple-primary:hover {
+  background-color: var(--apple-blue-hover);
+}
+
+.btn-apple-secondary {
+  display: inline-block;
+  background-color: transparent;
+  color: #2997ff;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 8px 18px;
+  border-radius: 980px;
+  border: 1px solid #2997ff;
+}
+
+.hero-light .btn-apple-secondary,
+.box-light .btn-apple-secondary {
+  color: var(--apple-blue);
+  border-color: var(--apple-blue);
+}
+
+.btn-apple-secondary:hover {
+  background-color: rgba(0, 113, 227, 0.1);
+}
+
+/* 6. HERO MODULES (UNIT UTAMA APPLE) */
+.hero-module {
+  position: relative;
+  text-align: center;
+  padding-top: 60px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.hero-dark {
+  background-color: #000000;
+  color: var(--text-light);
+}
+
+.hero-light {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.hero-headline {
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.07143;
+  margin-bottom: 6px;
+}
+
+.titanium-text {
+  background: linear-gradient(180deg, #ffffff 40%, #999793 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subhead {
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: #a1a1a6;
+  margin-bottom: 8px;
+}
+
+.hero-light .hero-subhead {
+  color: #424245;
+}
+
+.ai-glow-text {
+  background: linear-gradient(90deg, #5eb5f7, #c37aff, #ff8976, #f7ba53);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+}
+
+.hero-price {
+  font-size: 14px;
+  color: var(--text-gray);
+  margin-bottom: 16px;
+}
+
+.hero-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+/* Color Picker Row */
+.color-picker-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.color-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.color-dot.ultramarine {
+  background-color: #3b5998;
+}
+.color-dot.teal {
+  background-color: #38b2ac;
+}
+.color-dot.pink {
+  background-color: #f687b3;
+}
+.color-dot.white {
+  background-color: #f7fafc;
+  border: 1px solid #cbd5e0;
+}
+.color-dot.black {
+  background-color: #1a202c;
+}
+
+/* 7. REAL DEVICE SHOWCASE PRESENTATION */
+.hero-showcase {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: 15px;
+  overflow: hidden;
+}
+
+.hero-real-img {
+  width: 90%;
+  max-width: 760px;
+  height: 480px;
+  object-fit: cover;
+  border-radius: 28px 28px 0 0;
+  display: block;
+}
+
+.hero-img-pro {
+  box-shadow: 0 -15px 45px rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: none;
+}
+
+.hero-img-standard {
+  box-shadow: 0 -10px 35px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: none;
+}
+
+.hero-img-watch {
+  max-width: 600px;
+  height: 400px;
+  box-shadow: 0 -15px 45px rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: none;
+}
+
+/* 8. BENTO PROMO GRID (6 KOTAK RESMI APPLE.COM) */
+.bento-grid {
+  max-width: 1280px;
+  margin: 0 auto 12px auto;
+  padding: 0 12px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.grid-box {
+  border-radius: 18px;
+  padding-top: 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 500px;
+}
+
+.box-dark {
+  background-color: #000000;
+  color: var(--text-light);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.box-light {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.box-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 30px;
+}
+
+.box-headline {
+  font-size: 36px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.box-brand-lockup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.box-brand-title {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.box-desc {
+  font-size: 16px;
+  line-height: 1.35;
+  color: var(--text-gray);
+  max-width: 400px;
+  margin: 0 auto 14px auto;
+}
+
+.box-light .box-desc {
+  color: var(--text-secondary);
+}
+
+.box-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.box-artwork {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: auto;
+  overflow: hidden;
+}
+
+.bento-real-img {
+  width: 100%;
+  max-width: 520px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 16px 16px 0 0;
+  display: block;
+}
+
+/* 9. KENAPA BELANJA DI APPLE (PERKS) */
+.apple-perks {
+  background-color: var(--bg-white);
+  padding: 65px 20px;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.perks-container {
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.perks-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-dark);
+  margin-bottom: 45px;
+}
+
+.perks-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.perk-card {
+  text-align: center;
+  padding: 10px;
+}
+
+.perk-svg-icon {
+  color: var(--text-dark);
+  margin-bottom: 14px;
+  display: inline-flex;
+}
+
+.perk-card h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+}
+
+.perk-card p {
+  font-size: 13px;
+  color: var(--text-gray);
+  line-height: 1.45;
+}
+
+/* 10. GLOBAL FOOTER (CLEAN & COMPACT) */
+.globalfooter {
+  background-color: var(--bg-light);
+  color: #6e6e73;
+  font-size: 12px;
+  line-height: 1.33337;
+  padding: 28px 0 32px 0;
+}
+
+.globalfooter-content {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 22px;
+}
+
+.globalfooter-directory {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.directory-column h3 {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-bottom: 10px;
+}
+
+.directory-column ul li {
+  margin-bottom: 8px;
+}
+
+.directory-column a {
+  color: var(--text-secondary);
+}
+
+.directory-column a:hover {
+  color: #000000;
+  text-decoration: underline;
+}
+
+.globalfooter-mini {
+  padding-top: 16px;
+}
+
+.mini-shop {
+  margin-bottom: 12px;
+  color: #86868b;
+}
+
+.mini-shop a {
+  color: var(--apple-blue);
+}
+
+.mini-shop a:hover {
+  text-decoration: underline;
+}
+
+.mini-legal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.legal-copyright {
+  margin-right: 20px;
+}
+
+.legal-links {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.legal-links a {
+  color: var(--text-secondary);
+}
+
+.legal-links a:hover {
+  color: #000000;
+  text-decoration: underline;
+}
+
+.legal-locale a {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.legal-locale a:hover {
+  color: #000000;
+  text-decoration: underline;
+}
+
+/* 11. RESPONSIVE DESIGN (MOBILE & TABLET) */
+@media (max-width: 833px) {
+  .hero-headline {
+    font-size: 40px;
+  }
+
+  .hero-subhead {
+    font-size: 21px;
+  }
+
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .perks-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .globalfooter-directory {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .globalnav-list {
+    overflow-x: auto;
+    gap: 16px;
+    padding-bottom: 4px;
+  }
+
+  .hero-headline {
+    font-size: 32px;
+  }
+
+  .hero-subhead {
+    font-size: 18px;
+  }
+
+  .hero-real-img {
+    height: 300px;
+  }
+
+  .bento-real-img {
+    height: 220px;
+  }
+
+  .perks-row {
+    grid-template-columns: 1fr;
+  }
+
+  .mini-legal {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
