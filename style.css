@@ -107,6 +107,17 @@ ol {
   opacity: 1;
 }
 
+.apple-logo {
+  padding-left: 0;
+  display: flex;
+  align-items: center;
+  opacity: 0.9;
+}
+
+.apple-logo:hover {
+  opacity: 1;
+}
+
 .nextstore-logo {
   color: #ffffff;
   font-size: 15px;
@@ -221,12 +232,16 @@ ol {
 }
 
 .hero-subhead {
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 400;
   letter-spacing: -0.01em;
   line-height: 1.2;
   color: #a1a1a6;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+.hero-dark .hero-subhead {
+  color: #f5f5f7;
 }
 
 .hero-light .hero-subhead {
@@ -323,6 +338,26 @@ ol {
   box-shadow: 0 -15px 45px rgba(0, 0, 0, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-bottom: none;
+}
+
+/* Hero Pro Visual with PRO behind the phone */
+.hero-pro-showcase {
+  width: 100%;
+  max-width: 1024px;
+  margin: 15px auto 40px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+  overflow: visible;
+}
+
+.hero-pro-img {
+  width: 92%;
+  max-width: 860px;
+  height: auto;
+  display: block;
+  object-fit: contain;
 }
 
 /* 8. BENTO PROMO GRID (6 KOTAK RESMI APPLE.COM) */
