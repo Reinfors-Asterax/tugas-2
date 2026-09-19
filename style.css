@@ -1,6 +1,6 @@
 /* ==========================================================================
-   APPLE.COM OFFICIAL-STYLE DESIGN SYSTEM (IMPROVED & POLISHED)
-   Static, Non-Animated, Pixel-Accurate Typography & Architecture
+   APPLE.COM OFFICIAL-STYLE DESIGN SYSTEM
+   Pixel-Accurate Proportions, Typography & Aesthetics (Static / Clean)
    ========================================================================== */
 
 /* 1. RESET & VARIABLES */
@@ -13,13 +13,11 @@
 }
 
 :root {
-  --apple-font:
-    "SF Pro Display", "SF Pro Text", "Inter", -apple-system, BlinkMacSystemFont,
-    "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --bg-nav: rgba(22, 22, 23, 0.85);
+  --apple-font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --bg-nav: rgba(0, 0, 0, 0.8);
   --bg-dark: #000000;
-  --bg-dark-secondary: #161617;
-  --bg-light: #f5f5f7;
+  --bg-light: #fbfbfd;
+  --bg-footer: #f5f5f7;
   --bg-white: #ffffff;
   --text-dark: #1d1d1f;
   --text-light: #f5f5f7;
@@ -27,7 +25,6 @@
   --text-secondary: #515154;
   --apple-blue: #0071e3;
   --apple-blue-hover: #0077ed;
-  --apple-orange: #f56300;
   --border-subtle: #d2d2d7;
   --border-dark: rgba(255, 255, 255, 0.12);
 }
@@ -58,7 +55,7 @@ ol {
   list-style: none;
 }
 
-/* 2. GLOBAL NAVIGATION (44px) */
+/* 2. GLOBAL NAVIGATION (APPLE 44px GLOBALNAV) */
 .globalnav {
   position: sticky;
   top: 0;
@@ -68,7 +65,7 @@ ol {
   background: var(--bg-nav);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
   z-index: 9999;
 }
 
@@ -93,7 +90,7 @@ ol {
 
 .globalnav-link {
   font-size: 12px;
-  color: #d6d6d6;
+  color: #e8e8ed;
   letter-spacing: -0.01em;
   padding: 0 8px;
   display: flex;
@@ -109,9 +106,9 @@ ol {
 
 .nextstore-logo {
   color: #ffffff;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: -0.025em;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
   padding-left: 0;
   opacity: 1;
 }
@@ -122,16 +119,18 @@ ol {
 
 .nav-icon {
   padding: 0 4px;
+  display: flex;
+  align-items: center;
 }
 
 /* 3. RIBBON PENGUMUMAN */
 .ribbon {
-  background-color: #121212;
+  background-color: #1d1d1f;
   color: #a1a1a6;
   text-align: center;
-  font-size: 13px;
+  font-size: 14px;
   padding: 12px 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .ribbon a {
@@ -142,7 +141,7 @@ ol {
   text-decoration: underline;
 }
 
-/* 5. BUTTONS KHAS APPLE */
+/* 4. BUTTONS KHAS APPLE (PILL SHAPE 980px) */
 .btn-apple-primary {
   display: inline-block;
   background-color: var(--apple-blue);
@@ -179,13 +178,18 @@ ol {
   background-color: rgba(0, 113, 227, 0.1);
 }
 
-/* 6. HERO MODULES (UNIT UTAMA APPLE) */
+/* 5. HERO MODULES (UNIT UTAMA APPLE.COM) */
 .hero-module {
   position: relative;
   text-align: center;
-  padding-top: 60px;
+  padding-top: 55px;
   margin-bottom: 12px;
   overflow: hidden;
+  min-height: 650px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .hero-dark {
@@ -208,8 +212,8 @@ ol {
 
 .hero-headline {
   font-size: 56px;
-  font-weight: 700;
-  letter-spacing: -0.025em;
+  font-weight: 600;
+  letter-spacing: -0.015em;
   line-height: 1.07143;
   margin-bottom: 6px;
 }
@@ -221,16 +225,19 @@ ol {
 }
 
 .hero-subhead {
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
-  color: #a1a1a6;
-  margin-bottom: 8px;
+  letter-spacing: 0.004em;
+  line-height: 1.14286;
+  margin-bottom: 6px;
+}
+
+.hero-dark .hero-subhead {
+  color: #f5f5f7;
 }
 
 .hero-light .hero-subhead {
-  color: #424245;
+  color: #1d1d1f;
 }
 
 .ai-glow-text {
@@ -238,6 +245,19 @@ ol {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 600;
+}
+
+.hero-subtext {
+  font-size: 19px;
+  font-weight: 400;
+  letter-spacing: 0.004em;
+  line-height: 1.33;
+  color: var(--text-gray);
+  margin-bottom: 6px;
+}
+
+.hero-light .hero-subtext {
+  color: #515154;
 }
 
 .hero-price {
@@ -251,7 +271,7 @@ ol {
   justify-content: center;
   align-items: center;
   gap: 14px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 /* Color Picker Row */
@@ -259,7 +279,7 @@ ol {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .color-dot {
@@ -268,64 +288,79 @@ ol {
   border-radius: 50%;
   cursor: pointer;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
-.color-dot.ultramarine {
-  background-color: #3b5998;
-}
-.color-dot.teal {
-  background-color: #38b2ac;
-}
-.color-dot.pink {
-  background-color: #f687b3;
-}
-.color-dot.white {
-  background-color: #f7fafc;
-  border: 1px solid #cbd5e0;
-}
-.color-dot.black {
-  background-color: #1a202c;
+.color-dot.active {
+  outline-color: var(--apple-blue);
 }
 
-/* 7. REAL DEVICE SHOWCASE PRESENTATION */
+.color-dot.ultramarine { background-color: #3b5998; }
+.color-dot.teal { background-color: #38b2ac; }
+.color-dot.pink { background-color: #f687b3; }
+.color-dot.white { background-color: #f7fafc; border: 1px solid #cbd5e0; }
+.color-dot.black { background-color: #1a202c; }
+
+/* Watch Specific Title */
+.watch-lockup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.watch-brand {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+}
+
+.watch-series {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #e53e3e;
+  margin-bottom: 6px;
+}
+
+/* 6. HERO VISUAL SHOWCASE */
 .hero-showcase {
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  width: 100%;
   margin-top: 15px;
   overflow: hidden;
 }
 
 .hero-real-img {
-  width: 90%;
-  max-width: 760px;
-  height: 480px;
+  width: 100%;
+  max-width: 960px;
+  height: 440px;
   object-fit: cover;
-  border-radius: 28px 28px 0 0;
+  object-position: center bottom;
+  border-radius: 20px 20px 0 0;
   display: block;
+  margin: 0 auto;
 }
 
 .hero-img-pro {
   box-shadow: 0 -15px 45px rgba(0, 0, 0, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-bottom: none;
 }
 
 .hero-img-standard {
-  box-shadow: 0 -10px 35px rgba(0, 0, 0, 0.12);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-bottom: none;
+  box-shadow: 0 -10px 35px rgba(0, 0, 0, 0.08);
 }
 
 .hero-img-watch {
-  max-width: 600px;
+  max-width: 780px;
   height: 400px;
   box-shadow: 0 -15px 45px rgba(0, 0, 0, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: none;
 }
 
-/* 8. BENTO PROMO GRID (6 KOTAK RESMI APPLE.COM) */
+/* 7. BENTO PROMO GRID (6 KOTAK RESMI APPLE.COM) */
 .bento-grid {
   max-width: 1280px;
   margin: 0 auto 12px auto;
@@ -337,14 +372,14 @@ ol {
 
 .grid-box {
   border-radius: 18px;
-  padding-top: 48px;
+  padding-top: 52px;
   text-align: center;
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 500px;
+  min-height: 580px;
 }
 
 .box-dark {
@@ -366,32 +401,21 @@ ol {
 }
 
 .box-headline {
-  font-size: 36px;
+  font-size: 40px;
   font-weight: 600;
   letter-spacing: -0.015em;
   line-height: 1.1;
   margin-bottom: 6px;
 }
 
-.box-brand-lockup {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  margin-bottom: 6px;
-}
-
-.box-brand-title {
-  font-size: 24px;
-  font-weight: 600;
-}
-
 .box-desc {
-  font-size: 16px;
+  font-size: 19px;
+  font-weight: 400;
+  letter-spacing: 0.004em;
   line-height: 1.35;
   color: var(--text-gray);
-  max-width: 400px;
-  margin: 0 auto 14px auto;
+  max-width: 440px;
+  margin: 0 auto 16px auto;
 }
 
 .box-light .box-desc {
@@ -418,16 +442,17 @@ ol {
 .bento-real-img {
   width: 100%;
   max-width: 520px;
-  height: 280px;
+  height: 340px;
   object-fit: cover;
+  object-position: center bottom;
   border-radius: 16px 16px 0 0;
   display: block;
 }
 
-/* 9. KENAPA BELANJA DI APPLE (PERKS) */
+/* 8. KENAPA BELANJA DI NEXTSTORE (PERKS STRIP) */
 .apple-perks {
   background-color: var(--bg-white);
-  padding: 65px 20px;
+  padding: 60px 20px;
   border-top: 1px solid var(--border-subtle);
   border-bottom: 1px solid var(--border-subtle);
 }
@@ -476,13 +501,13 @@ ol {
   line-height: 1.45;
 }
 
-/* 10. GLOBAL FOOTER (CLEAN & COMPACT) */
+/* 9. GLOBAL FOOTER (RESMI APPLE CLEAN STYLE) */
 .globalfooter {
-  background-color: var(--bg-light);
+  background-color: var(--bg-footer);
   color: #6e6e73;
   font-size: 12px;
   line-height: 1.33337;
-  padding: 28px 0 32px 0;
+  padding: 24px 0 30px 0;
 }
 
 .globalfooter-content {
@@ -573,14 +598,18 @@ ol {
   text-decoration: underline;
 }
 
-/* 11. RESPONSIVE DESIGN (MOBILE & TABLET) */
+/* 10. RESPONSIVE DESIGN (MOBILE & TABLET) */
 @media (max-width: 833px) {
   .hero-headline {
     font-size: 40px;
   }
 
   .hero-subhead {
-    font-size: 21px;
+    font-size: 22px;
+  }
+
+  .hero-subtext {
+    font-size: 16px;
   }
 
   .bento-grid {
@@ -609,15 +638,15 @@ ol {
   }
 
   .hero-subhead {
-    font-size: 18px;
+    font-size: 19px;
   }
 
   .hero-real-img {
-    height: 300px;
+    height: 280px;
   }
 
   .bento-real-img {
-    height: 220px;
+    height: 240px;
   }
 
   .perks-row {
