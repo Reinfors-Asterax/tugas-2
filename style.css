@@ -1,56 +1,88 @@
-/* ==========================================================================
-   APPLE.COM OFFICIAL-STYLE DESIGN SYSTEM (IMPROVED & POLISHED)
-   Static, Non-Animated, Pixel-Accurate Typography & Architecture
-   ========================================================================== */
-
-/* 1. RESET & VARIABLES */
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 :root {
   --apple-font:
     "SF Pro Display", "SF Pro Text", "Inter", -apple-system, BlinkMacSystemFont,
     "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --bg-nav: rgba(22, 22, 23, 0.85);
+
   --bg-dark: #000000;
   --bg-dark-secondary: #161617;
   --bg-light: #f5f5f7;
   --bg-white: #ffffff;
+  --bg-nav: rgba(255, 255, 255, 0.8);
+  --bg-nav-dark: rgba(22, 22, 23, 0.8);
+
   --text-dark: #1d1d1f;
+  --text-dark-secondary: #6e6e73;
   --text-light: #f5f5f7;
+  --text-light-secondary: #a1a1a6;
   --text-gray: #86868b;
-  --text-secondary: #515154;
+  --text-blue: #06c;
+  --text-blue-dark: #2997ff;
+
   --apple-blue: #0071e3;
   --apple-blue-hover: #0077ed;
-  --apple-orange: #f56300;
+  --apple-blue-light: #2997ff;
+
   --border-subtle: #d2d2d7;
-  --border-dark: rgba(255, 255, 255, 0.12);
+  --border-dark: rgba(255, 255, 255, 0.14);
+  --border-card: rgba(0, 0, 0, 0.04);
+
+  --nav-height: 44px;
+  --hero-content-height: 650px;
+  --promo-content-height: 580px;
+}
+
+@media (min-width: 1069px) and (min-height: 776px) {
+  :root {
+    --hero-content-height: 692px;
+  }
+}
+
+@media (max-width: 1068px) {
+  :root {
+    --hero-content-height: 570px;
+    --promo-content-height: 490px;
+  }
+}
+
+@media (max-width: 734px) {
+  :root {
+    --hero-content-height: 500px;
+    --promo-content-height: 500px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
   font-family: var(--apple-font);
-  background-color: var(--bg-dark);
+  background-color: #ffffff;
   color: var(--text-dark);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
 }
 
 body {
   line-height: 1.47059;
   font-weight: 400;
   letter-spacing: -0.022em;
-  background-color: #000000;
+  background-color: #ffffff;
+  color: var(--text-dark);
   overflow-x: hidden;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+  transition:
+    opacity 0.2s ease,
+    color 0.2s ease;
 }
 
 ul,
@@ -58,17 +90,22 @@ ol {
   list-style: none;
 }
 
-/* 2. GLOBAL NAVIGATION (44px) */
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
 .globalnav {
   position: sticky;
   top: 0;
   left: 0;
   width: 100%;
-  height: 44px;
-  background: var(--bg-nav);
+  height: var(--nav-height);
+  background-color: var(--bg-nav);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   z-index: 9999;
 }
 
@@ -77,12 +114,43 @@ ol {
   height: 100%;
   margin: 0 auto;
   padding: 0 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.mobile-icons {
+  display: none;
+}
+
+.globalnav-logo {
+  display: inline-flex;
+  align-items: center;
+  color: #1d1d1f;
+  opacity: 0.88;
+  padding: 0 4px 0 0;
+  height: 100%;
+  transition:
+    opacity 0.2s ease,
+    color 0.2s ease;
+}
+
+.globalnav-logo:hover {
+  opacity: 1;
+  color: #000000;
+}
+
+.globalnav-logo svg {
+  fill: currentColor;
 }
 
 .globalnav-list {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex: 1;
+  margin-left: 24px;
   height: 100%;
 }
 
@@ -93,431 +161,558 @@ ol {
 
 .globalnav-link {
   font-size: 12px;
-  color: #d6d6d6;
-  letter-spacing: -0.01em;
-  padding: 0 8px;
-  display: flex;
-  align-items: center;
+  color: #1d1d1f;
   opacity: 0.8;
+  padding: 0 8px;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
 }
 
 .globalnav-link:hover,
 .globalnav-link.active {
-  color: #ffffff;
   opacity: 1;
+  color: #000000;
 }
 
-.apple-logo {
-  padding-left: 0;
-  display: flex;
-  align-items: center;
-  opacity: 0.9;
-}
-
-.apple-logo:hover {
-  opacity: 1;
-}
-
-.nextstore-logo {
-  color: #ffffff;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  padding-left: 0;
-  opacity: 1;
-}
-
-.nextstore-logo:hover {
-  color: var(--apple-blue);
+.globalnav-link svg {
+  fill: currentColor;
 }
 
 .nav-icon {
+  color: #1d1d1f;
   padding: 0 4px;
 }
 
-/* 3. RIBBON PENGUMUMAN */
+.nav-toggle-checkbox {
+  display: none;
+}
+
+.nav-toggle-label {
+  display: none;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  z-index: 10001;
+}
+
+.hamburger-line {
+  display: block;
+  width: 17px;
+  height: 1.2px;
+  background-color: #1d1d1f;
+  position: relative;
+  transition:
+    transform 0.25s ease,
+    background-color 0.2s ease;
+}
+
+.hamburger-line::before,
+.hamburger-line::after {
+  content: "";
+  position: absolute;
+  width: 17px;
+  height: 1.2px;
+  background-color: #1d1d1f;
+  transition:
+    transform 0.25s ease,
+    top 0.25s ease;
+}
+
+.hamburger-line::before {
+  top: -5px;
+}
+
+.hamburger-line::after {
+  top: 5px;
+}
+
+.mobile-nav-drawer {
+  display: none;
+}
+
 .ribbon {
-  background-color: #121212;
-  color: #a1a1a6;
+  background-color: #f5f5f7;
+  color: #1d1d1f;
   text-align: center;
-  font-size: 13px;
-  padding: 12px 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 15px;
+  padding: 20px 20px;
+  border-bottom: 1px solid #d2d2d7;
+  line-height: 1.4;
+}
+
+.ribbon p {
+  max-width: 1024px;
+  margin: 0 auto;
 }
 
 .ribbon a {
-  color: #2997ff;
+  color: #0071e3;
+  margin-left: 4px;
 }
 
 .ribbon a:hover {
   text-decoration: underline;
 }
 
-/* 5. BUTTONS KHAS APPLE */
-.btn-apple-primary {
-  display: inline-block;
+.cta-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: 18px;
+  z-index: 3;
+}
+
+.btn-apple {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  border-radius: 980px;
+  letter-spacing: -0.015em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.hero-module .btn-apple {
+  font-size: 17px;
+  line-height: 1.17648;
+  padding: 11px 21px;
+  letter-spacing: -0.022em;
+}
+
+.bento-card .btn-apple {
+  font-size: 14px;
+  line-height: 1.33337;
+  padding: 7px 15px;
+}
+
+.btn-primary {
   background-color: var(--apple-blue);
   color: #ffffff;
-  font-size: 14px;
-  font-weight: 400;
-  padding: 8px 18px;
-  border-radius: 980px;
   border: 1px solid transparent;
 }
 
-.btn-apple-primary:hover {
+.btn-primary:hover {
   background-color: var(--apple-blue-hover);
 }
 
-.btn-apple-secondary {
-  display: inline-block;
+.btn-secondary {
   background-color: transparent;
   color: #2997ff;
-  font-size: 14px;
-  font-weight: 400;
-  padding: 8px 18px;
-  border-radius: 980px;
   border: 1px solid #2997ff;
 }
 
-.hero-light .btn-apple-secondary,
-.box-light .btn-apple-secondary {
+.btn-secondary:hover {
+  background-color: #2997ff;
+  color: #ffffff;
+}
+
+.theme-light .btn-secondary {
   color: var(--apple-blue);
   border-color: var(--apple-blue);
 }
 
-.btn-apple-secondary:hover {
-  background-color: rgba(0, 113, 227, 0.1);
+.theme-light .btn-secondary:hover {
+  background-color: var(--apple-blue);
+  color: #ffffff;
 }
 
-/* 6. HERO MODULES (UNIT UTAMA APPLE) */
 .hero-module {
   position: relative;
-  text-align: center;
-  padding-top: 60px;
+  width: 100%;
+  height: var(--hero-content-height);
+  min-height: var(--hero-content-height);
   margin-bottom: 12px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding-top: 55px;
 }
 
-.hero-dark {
+.theme-dark {
   background-color: #000000;
   color: var(--text-light);
 }
 
-.hero-light {
+.theme-light {
   background-color: var(--bg-light);
   color: var(--text-dark);
 }
 
-.hero-content {
+.hero-copy {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   max-width: 800px;
-  margin: 0 auto;
   padding: 0 20px;
 }
 
 .hero-headline {
   font-size: 56px;
-  font-weight: 700;
-  letter-spacing: -0.025em;
+  font-weight: 600;
+  letter-spacing: -0.005em;
   line-height: 1.07143;
   margin-bottom: 6px;
 }
 
-.titanium-text {
-  background: linear-gradient(180deg, #ffffff 40%, #999793 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.hero-logo-img {
+  max-height: 70px;
+  width: auto;
+  margin: 0 auto 12px auto;
 }
 
 .hero-subhead {
   font-size: 28px;
   font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
-  color: #a1a1a6;
-  margin-bottom: 12px;
+  letter-spacing: 0.007em;
+  line-height: 1.14286;
+  margin-bottom: 6px;
 }
 
-.hero-dark .hero-subhead {
+.theme-dark .hero-subhead {
   color: #f5f5f7;
 }
 
-.hero-light .hero-subhead {
-  color: #424245;
+.theme-light .hero-subhead {
+  color: #1d1d1f;
 }
 
-.ai-glow-text {
-  background: linear-gradient(90deg, #5eb5f7, #c37aff, #ff8976, #f7ba53);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 600;
-}
-
-.hero-price {
+.hero-dates {
   font-size: 14px;
-  color: var(--text-gray);
-  margin-bottom: 16px;
+  letter-spacing: -0.015em;
+  color: #86868b;
+  margin-top: 4px;
 }
 
-.hero-links {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 30px;
-}
-
-/* Color Picker Row */
-.color-picker-row {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 25px;
-}
-
-.color-dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-}
-
-.color-dot.ultramarine {
-  background-color: #3b5998;
-}
-.color-dot.teal {
-  background-color: #38b2ac;
-}
-.color-dot.pink {
-  background-color: #f687b3;
-}
-.color-dot.white {
-  background-color: #f7fafc;
-  border: 1px solid #cbd5e0;
-}
-.color-dot.black {
-  background-color: #1a202c;
-}
-
-/* 7. REAL DEVICE SHOWCASE PRESENTATION */
 .hero-showcase {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  margin-top: 15px;
-  overflow: hidden;
-}
-
-.hero-real-img {
-  width: 90%;
-  max-width: 760px;
-  height: 480px;
-  object-fit: cover;
-  border-radius: 28px 28px 0 0;
-  display: block;
-}
-
-.hero-img-pro {
-  box-shadow: 0 -15px 45px rgba(0, 0, 0, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-bottom: none;
-}
-
-.hero-img-standard {
-  box-shadow: 0 -10px 35px rgba(0, 0, 0, 0.12);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-bottom: none;
-}
-
-.hero-img-watch {
-  max-width: 600px;
-  height: 400px;
-  box-shadow: 0 -15px 45px rgba(0, 0, 0, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: none;
-}
-
-/* Hero Pro Visual with PRO behind the phone */
-.hero-pro-showcase {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 1024px;
-  margin: 15px auto 40px auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #000000;
-  overflow: visible;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
 }
 
-.hero-pro-img {
-  width: 92%;
-  max-width: 860px;
-  height: auto;
+.hero-showcase picture {
   display: block;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
 }
 
-/* 8. BENTO PROMO GRID (6 KOTAK RESMI APPLE.COM) */
-.bento-grid {
-  max-width: 1280px;
-  margin: 0 auto 12px auto;
+.hero-showcase img {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  height: 100%;
+  max-width: none;
+  display: block;
+}
+
+.bento-section {
+  width: 100%;
+  margin: 0 0 12px 0;
   padding: 0 12px;
+}
+
+.bento-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
 }
 
-.grid-box {
-  border-radius: 18px;
-  padding-top: 48px;
-  text-align: center;
-  position: relative;
+.bento-card {
+  border-radius: 0;
   overflow: hidden;
+  position: relative;
+  min-height: var(--promo-content-height);
+  height: var(--promo-content-height);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: 500px;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  padding: 52px 30px 0 30px;
 }
 
-.box-dark {
+.bento-card.content-bottom {
+  justify-content: flex-end;
+  padding: 0 30px 52px 30px;
+}
+
+.bento-card.content-split {
+  justify-content: space-between;
+  padding: 52px 30px 52px 30px;
+}
+
+.bento-card.theme-dark {
   background-color: #000000;
   color: var(--text-light);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.box-light {
+.bento-card.theme-light {
   background-color: var(--bg-light);
   color: var(--text-dark);
-  border: 1px solid rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
-.box-content {
+.bento-copy {
+.bento-copy,
+.bento-copy-top,
+.bento-copy-bottom {
   position: relative;
-  z-index: 2;
-  padding: 0 30px;
+  z-index: 3;
+  max-width: 440px;
+  margin: 0 auto;
 }
 
-.box-headline {
-  font-size: 36px;
+.bento-headline {
+  font-size: 40px;
   font-weight: 600;
-  letter-spacing: -0.015em;
+  letter-spacing: 0em;
   line-height: 1.1;
   margin-bottom: 6px;
 }
 
-.box-brand-lockup {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  margin-bottom: 6px;
+.bento-logo-img {
+  max-height: 38px;
+  max-height: 46px;
+  width: auto;
+  margin: 0 auto 10px auto;
 }
 
-.box-brand-title {
-  font-size: 24px;
-  font-weight: 600;
+.bento-subhead {
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 1.19048;
+  letter-spacing: 0.011em;
+  margin-bottom: 8px;
 }
 
-.box-desc {
-  font-size: 16px;
-  line-height: 1.35;
-  color: var(--text-gray);
-  max-width: 400px;
-  margin: 0 auto 14px auto;
+.theme-dark .bento-subhead {
+  color: #a1a1a6;
 }
 
-.box-light .box-desc {
-  color: var(--text-secondary);
+.theme-light .bento-subhead {
+  color: #515154;
 }
 
-.box-links {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 25px;
+.bento-links {
+  margin-top: 14px;
 }
 
-.box-artwork {
+.bento-artwork {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  margin-top: auto;
+  height: 100%;
+  z-index: 1;
   overflow: hidden;
+  pointer-events: none;
 }
 
-.bento-real-img {
-  width: 100%;
-  max-width: 520px;
-  height: 280px;
-  object-fit: cover;
-  border-radius: 16px 16px 0 0;
+.bento-artwork img {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  height: 100%;
+  max-width: none;
   display: block;
 }
 
-/* 9. KENAPA BELANJA DI APPLE (PERKS) */
-.apple-perks {
-  background-color: var(--bg-white);
-  padding: 65px 20px;
-  border-top: 1px solid var(--border-subtle);
-  border-bottom: 1px solid var(--border-subtle);
+.entertainment-section {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 60px 0 80px 0;
+  overflow: hidden;
 }
 
-.perks-container {
-  max-width: 1040px;
+.entertainment-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 40px auto;
+  padding: 0 20px;
+}
+
+.tv-brand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 19px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.tv-brand-badge svg {
+  fill: currentColor;
+}
+
+.entertainment-title {
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin-bottom: 10px;
+}
+
+.entertainment-desc {
+  font-size: 19px;
+  color: #a1a1a6;
+  max-width: 600px;
   margin: 0 auto;
 }
 
-.perks-title {
-  text-align: center;
-  font-size: 32px;
+.entertainment-carousel-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.entertainment-carousel {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 20px 40px 30px 40px;
+  scrollbar-width: none;
+}
+
+.entertainment-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.tv-card {
+  flex: 0 0 440px;
+  height: 250px;
+  border-radius: 0;
+  overflow: hidden;
+  position: relative;
+  scroll-snap-align: center;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tv-card:hover {
+  transform: scale(1.02);
+}
+
+.tv-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tv-card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 24px 20px 18px 20px;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.85) 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.tv-card-meta {
+  color: #ffffff;
+}
+
+.tv-genre {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #2997ff;
+  margin-bottom: 4px;
+}
+
+.tv-name {
+  font-size: 18px;
   font-weight: 600;
-  letter-spacing: -0.02em;
-  color: var(--text-dark);
-  margin-bottom: 45px;
+  letter-spacing: -0.01em;
 }
 
-.perks-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 25px;
-}
-
-.perk-card {
-  text-align: center;
-  padding: 10px;
-}
-
-.perk-svg-icon {
-  color: var(--text-dark);
-  margin-bottom: 14px;
+.tv-stream-btn {
   display: inline-flex;
-}
-
-.perk-card h4 {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--text-dark);
-  margin-bottom: 6px;
-}
-
-.perk-card p {
+  align-items: center;
+  gap: 6px;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #000000;
   font-size: 13px;
-  color: var(--text-gray);
-  line-height: 1.45;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 980px;
+  white-space: nowrap;
+  transition:
+    background-color 0.2s ease,
+    transform 0.15s ease;
 }
 
-/* 10. GLOBAL FOOTER (CLEAN & COMPACT) */
+.tv-stream-btn:hover {
+  background-color: #ffffff;
+  transform: scale(1.04);
+}
+
+.tv-stream-btn svg {
+  fill: currentColor;
+}
+
+.sosumi {
+  background-color: var(--bg-light);
+  color: var(--text-gray);
+  font-size: 11px;
+  line-height: 1.33337;
+  padding: 24px 0 16px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.sosumi-content {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 22px;
+}
+
+.sosumi-content ol {
+  list-style-type: decimal;
+  padding-left: 16px;
+}
+
+.sosumi-content li {
+  margin-bottom: 8px;
+}
+
+.sosumi-content a {
+  color: var(--text-dark-secondary);
+  text-decoration: underline;
+}
+
 .globalfooter {
   background-color: var(--bg-light);
   color: #6e6e73;
   font-size: 12px;
   line-height: 1.33337;
-  padding: 28px 0 32px 0;
+  padding: 20px 0 34px 0;
 }
 
 .globalfooter-content {
@@ -528,10 +723,9 @@ ol {
 
 .globalfooter-directory {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
   padding-bottom: 24px;
-  border-bottom: 1px solid var(--border-subtle);
 }
 
 .directory-column h3 {
@@ -542,11 +736,11 @@ ol {
 }
 
 .directory-column ul li {
-  margin-bottom: 8px;
+  margin-bottom: 9px;
 }
 
 .directory-column a {
-  color: var(--text-secondary);
+  color: #424245;
 }
 
 .directory-column a:hover {
@@ -554,8 +748,17 @@ ol {
   text-decoration: underline;
 }
 
+.directory-section {
+  margin-bottom: 20px;
+}
+
+.directory-section:last-child {
+  margin-bottom: 0;
+}
+
 .globalfooter-mini {
-  padding-top: 16px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border-subtle);
 }
 
 .mini-shop {
@@ -565,9 +768,6 @@ ol {
 
 .mini-shop a {
   color: var(--apple-blue);
-}
-
-.mini-shop a:hover {
   text-decoration: underline;
 }
 
@@ -576,21 +776,22 @@ ol {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
 }
 
 .legal-copyright {
-  margin-right: 20px;
+  margin-right: 18px;
+  color: #86868b;
 }
 
 .legal-links {
   display: flex;
-  gap: 14px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
 .legal-links a {
-  color: var(--text-secondary);
+  color: #424245;
 }
 
 .legal-links a:hover {
@@ -598,8 +799,12 @@ ol {
   text-decoration: underline;
 }
 
+.legal-links span {
+  color: #d2d2d7;
+}
+
 .legal-locale a {
-  color: var(--text-secondary);
+  color: #424245;
   font-weight: 500;
 }
 
@@ -608,8 +813,131 @@ ol {
   text-decoration: underline;
 }
 
-/* 11. RESPONSIVE DESIGN (MOBILE & TABLET) */
+@media (max-width: 1024px) {
+  .globalnav-content {
+    padding: 0 16px;
+  }
+
+  .globalnav-link {
+    padding: 0 6px;
+    font-size: 11px;
+  }
+
+  .hero-headline {
+    font-size: 48px;
+  }
+
+  .hero-subhead {
+    font-size: 24px;
+  }
+
+  .bento-headline {
+    font-size: 32px;
+  }
+
+  .bento-subhead {
+    font-size: 17px;
+  }
+}
+
 @media (max-width: 833px) {
+  .globalnav-list {
+    display: none;
+  }
+
+  .nav-toggle-label {
+    display: flex;
+  }
+
+  .globalnav-content {
+    justify-content: space-between;
+  }
+
+  .globalnav-logo {
+    display: inline-flex;
+    opacity: 0.9;
+  }
+
+  .mobile-icons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .mobile-icons a {
+    color: #1d1d1f;
+    opacity: 0.85;
+  }
+
+  .nav-toggle-checkbox:checked ~ .mobile-nav-drawer {
+    display: block;
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    width: 100%;
+    height: calc(100vh - var(--nav-height));
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    z-index: 9998;
+    overflow-y: auto;
+    padding: 24px 32px 60px 32px;
+    animation: drawerFade 0.25s ease-out;
+  }
+
+  .nav-toggle-checkbox:checked + .nav-toggle-label .hamburger-line {
+    background-color: transparent;
+  }
+
+  .nav-toggle-checkbox:checked + .nav-toggle-label .hamburger-line::before {
+    transform: rotate(45deg);
+    top: 0;
+  }
+
+  .nav-toggle-checkbox:checked + .nav-toggle-label .hamburger-line::after {
+    transform: rotate(-45deg);
+    top: 0;
+  }
+
+  @keyframes drawerFade {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .mobile-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .mobile-nav-item a {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1d1d1f;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    padding-bottom: 14px;
+  }
+
+  .mobile-nav-item a:hover {
+    color: #0071e3;
+  }
+
+  .hero-module {
+    padding-top: 42px;
+  }
+
+  .hero-module .btn-apple {
+    font-size: 14px;
+    padding: 7px 15px;
+  }
+
   .hero-headline {
     font-size: 40px;
   }
@@ -618,27 +946,34 @@ ol {
     font-size: 21px;
   }
 
+  .hero-logo-img {
+    max-height: 56px;
+  }
+
   .bento-grid {
     grid-template-columns: 1fr;
   }
 
-  .perks-row {
-    grid-template-columns: repeat(2, 1fr);
+  .bento-card {
+    padding-top: 45px;
+  }
+
+  .tv-card {
+    flex: 0 0 340px;
+    height: 200px;
+  }
+
+  .entertainment-title {
+    font-size: 36px;
   }
 
   .globalfooter-directory {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
   }
 }
 
 @media (max-width: 600px) {
-  .globalnav-list {
-    overflow-x: auto;
-    gap: 16px;
-    padding-bottom: 4px;
-  }
-
   .hero-headline {
     font-size: 32px;
   }
@@ -647,15 +982,40 @@ ol {
     font-size: 18px;
   }
 
-  .hero-real-img {
-    height: 300px;
+  .hero-logo-img {
+    max-height: 44px;
   }
 
-  .bento-real-img {
-    height: 220px;
+  .bento-headline {
+    font-size: 28px;
   }
 
-  .perks-row {
+  .bento-subhead {
+    font-size: 15px;
+  }
+
+  .bento-logo-img {
+    max-height: 32px;
+  }
+
+  .bento-card {
+    padding: 36px 20px 0 20px;
+  }
+
+  .bento-card.content-bottom {
+    padding: 0 20px 36px 20px;
+  }
+
+  .bento-card.content-split {
+    padding: 36px 20px 36px 20px;
+  }
+
+  .tv-card {
+    flex: 0 0 290px;
+    height: 175px;
+  }
+
+  .globalfooter-directory {
     grid-template-columns: 1fr;
   }
 
